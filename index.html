@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pomidorki</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/moj-styl.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <!--jQuery-->
+    <script src="jq/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="jq/jquery.js"></script>
+
+    <!--FancyBox-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        initTooltips();
+    </script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+
+    <a class="navbar-brand text-light">Superanckie filterki, yo!</a>
+
+</nav>
+
+<div class="container" id="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container thumbnail">
+                <input type="file" id="uploadImg"/>
+                <img src="" id="outputImg" alt="" style="width: 100%; object-fit: scale-down; !important;"/>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="container thumbnail">
+                a
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container thumbnail">
+        <div class="row">
+            <div class="col-md-8">
+                <p>To jest stopka strony, więc tutaj zamieszczam informację, że to jest ładna strona, pozdrawiam
+                    Copyright Kamil
+                    Kulpan 2019</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <a class="btn btn-light fa fa-facebook" data-toggle="tooltip" data-placement="bottom" title="Facebook"
+                   href="https://www.facebook.com/"></a>
+                <a class="btn btn-light fa fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Twitter"
+                   href="https://twitter.com/"></a>
+                <a class="btn btn-light fa fa-google" data-toggle="tooltip" data-placement="bottom" title="Google"
+                   href="https://www.google.com/"></a>
+                <a class="btn btn-light fa fa-youtube" data-toggle="tooltip" data-placement="bottom" title="Youtube"
+                   href="https://www.youtube.com/"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
