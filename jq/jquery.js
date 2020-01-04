@@ -2,6 +2,7 @@ $(document).ready(function () {
     initTooltips();
     prepareImageLoader();
     applyFilter();
+    prepareSliders();
 });
 
 var image = new Image();
@@ -18,12 +19,7 @@ function applyFilter() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, 0, 0);
 
-    for (var i = 0; i < 1 && i * 300 < image.height - 11; i += 0.04) {
-        ctx.globalAlpha = i;
-        ctx.fillRect(0, i * 300, i * 300, 10);
-        // ctx.fillRect(0, image.width - i * 300,  image.height - i * 300, 10);
-    }
-
+    filterNr1();
 }
 
 function prepareImageLoader() {
@@ -41,27 +37,10 @@ function prepareImageLoader() {
 
         fReader.onload = function () {
 
-            // canvas.width = img.width;
-            // canvas.height = img.height;
-
             image.src = fReader.result;
-
             image.onload = function () {
-                // var sourceWidth = this.width;
-                // var sourceHeight = this.height;
-                // var destX = canvas.width / 2 - this.width / 2;
-                // var destY = canvas.height / 2 - this.height / 2;
                 ctx.drawImage(this, 0, 0);
-
-                // for (var i = 0; i < 1 && i * 300 < image.height - 11; i += 0.04) {
-                //             ctx.globalAlpha = i;
-                //             ctx.fillRect(0, i * 300, i * 300, 10);
-                //             // ctx.fillRect(0, image.width - i * 300,  image.height - i * 300, 10);
-                //         }
-
                 var dataURL = canvas.toDataURL("image/png");
-
-
                 localStorage.setItem("imgData", dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
             };
         };
@@ -70,16 +49,25 @@ function prepareImageLoader() {
     });
 }
 
-// function getBase64Image(img) {
-//     var canvas = document.createElement("canvas");
-//     canvas.width = img.width;
-//     canvas.height = img.height;
-//
-//     var ctx = canvas.getContext("2d");
-//     ctx.drawImage(img, 0, 0);
-//
-//     var dataURL = canvas.toDataURL("image/png");
-//
-//     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-// }
+function prepareSliders() {
+    var slider = document.getElementById("filter1range");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value; // Display the default slider value
 
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+}
+
+function filterNr1() {
+
+    var slider_value1 = document.getElementById("filter1range1").value;
+    var slider_value2 = document.getElementById("filter1range2").value;
+    var slider_value3 = document.getElementById("filter1range3").value;
+    var slider_value4 = document.getElementById("filter1range4").value;
+
+    for (var i = 0; i < 1 && i * slider_value1 < image.height - 11; i += 0.04) {
+        ctx.globalAlpha = i;
+        ctx.fillRect(0, i * slider_value1 + i * slider_value4, i * slider_value2, slider_value3);
+    }
+}

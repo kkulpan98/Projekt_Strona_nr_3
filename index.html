@@ -40,7 +40,7 @@
             <div class="container thumbnail">
                 <input type="file" id="uploadImg"/>
                 <canvas id="canvas" width="1000" height="800"></canvas>
-<!--                <img src="" id="outputImg" alt="" style="width: 100%; object-fit: scale-down; !important;"/>-->
+                <!--                <img src="" id="outputImg" alt="" style="width: 100%; object-fit: scale-down; !important;"/>-->
             </div>
         </div>
         <div class="col-md-4">
@@ -48,6 +48,51 @@
                 <button id="apply_filter" class="btn-dark btn-block" onclick="return applyFilter()">
                     Aplikuj filtr
                 </button>
+                <div class="form-group">
+                    <label for="filter1range1">Właściwość 1:</label>
+                    <input
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="50"
+                            class="slider"
+                            id="filter1range1">
+                </div>
+
+                <div class="form-group">
+                    <label for="filter1range2">Właściwość 1:</label>
+                    <input
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="50"
+                            class="slider"
+                            id="filter1range2">
+                </div>
+
+                <div class="form-group">
+                    <label for="filter1range3">Właściwość 1:</label>
+                    <input
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="50"
+                            class="slider"
+                            id="filter1range3">
+                </div>
+
+                <div class="form-group">
+                    <label for="filter1range4">Właściwość 1:</label>
+                    <input
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="50"
+                            class="slider"
+                            id="filter1range4">
+                </div>
+
+                <p id="demo">aaa</p>
             </div>
         </div>
     </div>
