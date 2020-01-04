@@ -2,7 +2,7 @@ $(document).ready(function () {
     initTooltips();
     prepareImageLoader();
     applyFilter();
-    prepareSliders();
+    // prepareSliders();
 });
 
 var image = new Image();
@@ -49,25 +49,28 @@ function prepareImageLoader() {
     });
 }
 
-function prepareSliders() {
-    var slider = document.getElementById("filter1range");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value; // Display the default slider value
-
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
-}
+// function prepareSliders() {
+//     var slider = document.getElementById("filter1range");
+//     var output = document.getElementById("demo");
+//     output.innerHTML = slider.value; // Display the default slider value
+//
+//     slider.oninput = function() {
+//         output.innerHTML = this.value;
+//     }
+// }
 
 function filterNr1() {
+    var use = $("#filter1toggle");
 
-    var slider_value1 = document.getElementById("filter1range1").value;
-    var slider_value2 = document.getElementById("filter1range2").value;
-    var slider_value3 = document.getElementById("filter1range3").value;
-    var slider_value4 = document.getElementById("filter1range4").value;
+    if (use.prop("checked")) {
+        var slider_value1 = document.getElementById("filter1range1").value;
+        var slider_value2 = document.getElementById("filter1range2").value;
+        var slider_value3 = document.getElementById("filter1range3").value;
+        var slider_value4 = document.getElementById("filter1range4").value;
 
-    for (var i = 0; i < 1 && i * slider_value1 < image.height - 11; i += 0.04) {
-        ctx.globalAlpha = i;
-        ctx.fillRect(0, i * slider_value1 + i * slider_value4, i * slider_value2, slider_value3);
+        for (var i = 0; i < 1 && i * slider_value1 < image.height - 11; i += 0.04) {
+            ctx.globalAlpha = i;
+            ctx.fillRect(0, i * slider_value1 + i * slider_value4, i * slider_value2, slider_value3);
+        }
     }
 }
