@@ -21,6 +21,7 @@ function applyFilter() {
 
     filterNr1();
     filterNr2();
+    filterNr3();
 }
 
 function prepareImageLoader() {
@@ -80,7 +81,7 @@ function filterNr2() { // negatyw
     var use = $("#filter2toggle");
 
     if (use.prop("checked")) {
-        var imageData = ctx.getImageData(0, 0, 400, 400);
+        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         var image_data = imageData.data;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -88,6 +89,24 @@ function filterNr2() { // negatyw
             image_data[i] = 255 - image_data[i];
             image_data[i + 1] = 255 - image_data[i + 1];
             image_data[i + 2] = 255 - image_data[i + 2];
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+    }
+}
+
+function filterNr3() {
+    var use = $("#filter3toggle");
+    if (use.prop("checked")) {
+        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var image_data = imageData.data;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < image_data.length; i += 4) {
+            var brightness = 0.34 * image_data[i] + 0.5 * image_data[i + 1] + 0.16 * image_data[i + 2];
+            image_data[i] = brightness;
+            image_data[i + 1] = brightness;
+            image_data[i + 2] = brightness;
         }
 
         ctx.putImageData(imageData, 0, 0);
