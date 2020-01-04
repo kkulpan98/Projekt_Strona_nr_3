@@ -22,6 +22,7 @@ function applyFilter() {
     filterNr1();
     filterNr2();
     filterNr3();
+    filterNr4()
 }
 
 function prepareImageLoader() {
@@ -95,7 +96,7 @@ function filterNr2() { // negatyw
     }
 }
 
-function filterNr3() {
+function filterNr3() { // czarno-bialy
     var use = $("#filter3toggle");
     if (use.prop("checked")) {
         var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -111,4 +112,21 @@ function filterNr3() {
 
         ctx.putImageData(imageData, 0, 0);
     }
+}
+
+function filterNr4() {
+    var slider_value_1 = document.getElementById("filter4range1").value;
+    slider_value_1 = parseInt(slider_value_1, 10);
+
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var image_data = imageData.data;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < image_data.length; i += 4) {
+        image_data[i] += slider_value_1;
+        image_data[i + 1] += slider_value_1;
+        image_data[i + 2] += slider_value_1;
+    }
+
+    ctx.putImageData(imageData, 0, 0);
 }
