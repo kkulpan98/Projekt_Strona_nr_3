@@ -22,7 +22,8 @@ function applyFilter() {
     filterNr1();
     filterNr2();
     filterNr3();
-    filterNr4()
+    filterNr4();
+    filterNr5();
 }
 
 function prepareImageLoader() {
@@ -126,6 +127,23 @@ function filterNr4() {
         image_data[i] += slider_value_1;
         image_data[i + 1] += slider_value_1;
         image_data[i + 2] += slider_value_1;
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+}
+
+function filterNr5() {
+    var input_value_1 = document.getElementById("filter5input1").value;
+    input_value_1 = parseFloat(input_value_1);
+
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var image_data = imageData.data;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < image_data.length; i += 4) {
+        image_data[i] = Math.pow(image_data[i], 1/input_value_1);
+        image_data[i + 1] = Math.pow(image_data[i + 1], 1/input_value_1);
+        image_data[i + 2] = Math.pow(image_data[i + 2], 1/input_value_1);
     }
 
     ctx.putImageData(imageData, 0, 0);
