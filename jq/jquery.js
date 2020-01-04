@@ -20,6 +20,7 @@ function applyFilter() {
     ctx.drawImage(image, 0, 0);
 
     filterNr1();
+    filterNr2();
 }
 
 function prepareImageLoader() {
@@ -59,7 +60,7 @@ function prepareImageLoader() {
 //     }
 // }
 
-function filterNr1() {
+function filterNr1() { // filtr to takie schodki
     var use = $("#filter1toggle");
 
     if (use.prop("checked")) {
@@ -72,5 +73,23 @@ function filterNr1() {
             ctx.globalAlpha = i;
             ctx.fillRect(0, i * slider_value1 + i * slider_value4, i * slider_value2, slider_value3);
         }
+    }
+}
+
+function filterNr2() { // negatyw
+    var use = $("#filter2toggle");
+
+    if (use.prop("checked")) {
+        var imageData = ctx.getImageData(0, 0, 400, 400);
+        var image_data = imageData.data;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < image_data.length; i += 4) {
+            image_data[i] = 255 - image_data[i];
+            image_data[i + 1] = 255 - image_data[i + 1];
+            image_data[i + 2] = 255 - image_data[i + 2];
+        }
+
+        ctx.putImageData(imageData, 0, 0);
     }
 }
