@@ -45,12 +45,19 @@
         </div>
         <div class="col-md-4">
             <div class="container thumbnail">
-<!--                <button id="apply_filter" class="btn-dark btn-block" onclick="applyFilter()">-->
-<!--                    Aplikuj filtr-->
-<!--                </button>-->
+                <!--                <button id="apply_filter" class="btn-dark btn-block" onclick="applyFilter()">-->
+                <!--                    Aplikuj filtr-->
+                <!--                </button>-->
+                <div class="form-group">
+                    <label class="form-check-label" for="filter1color1">
+                        Wybierz kolor:
+                    </label>
+                    <input type="color" name="favcolor" value="#ff0000" id="filter1color1" onchange="applyFilter()">
+                </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="filter1toggle" onchange="applyFilter()">
+                    <input class="form-check-input" type="checkbox" value="" id="filter1toggle"
+                           onchange="applyFilter()">
                     <label class="form-check-label" for="filter1toggle">
                         Czy chcesz użyć filtra 1?
                     </label>
@@ -105,14 +112,16 @@
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="filter2toggle" onchange="applyFilter()">
+                    <input class="form-check-input" type="checkbox" value="" id="filter2toggle"
+                           onchange="applyFilter()">
                     <label class="form-check-label" for="filter2toggle">
                         Czy chcesz użyć filtra 2?
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="filter3toggle" onchange="applyFilter()">
+                    <input class="form-check-input" type="checkbox" value="" id="filter3toggle"
+                           onchange="applyFilter()">
                     <label class="form-check-label" for="filter3toggle">
                         Czy chcesz użyć filtra 3?
                     </label>

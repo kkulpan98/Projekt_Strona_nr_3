@@ -72,6 +72,9 @@ function filterNr1() { // filtr to takie schodki
         var slider_value2 = document.getElementById("filter1range2").value;
         var slider_value3 = document.getElementById("filter1range3").value;
         var slider_value4 = document.getElementById("filter1range4").value;
+        var color_value1 = document.getElementById("filter1color1").value;
+
+        ctx.fillStyle = color_value1;
 
         for (var i = 0; i < 1 && i * slider_value1 < image.height - 11; i += 0.04) {
             ctx.globalAlpha = i;
