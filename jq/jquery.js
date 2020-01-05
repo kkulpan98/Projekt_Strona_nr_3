@@ -24,6 +24,7 @@ function applyFilter() {
     filterNr3();
     filterNr4();
     filterNr5();
+    filterNr6();
 }
 
 function prepareImageLoader() {
@@ -116,8 +117,7 @@ function filterNr3() { // czarno-bialy
 }
 
 function filterNr4() {
-    var slider_value_1 = document.getElementById("filter4range1").value;
-    slider_value_1 = parseInt(slider_value_1, 10);
+    var slider_value_1 = parseInt(document.getElementById("filter4range1").value, 10);
 
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var image_data = imageData.data;
@@ -133,8 +133,7 @@ function filterNr4() {
 }
 
 function filterNr5() {
-    var input_value_1 = document.getElementById("filter5input1").value;
-    input_value_1 = parseFloat(input_value_1);
+    var input_value_1 = parseFloat(document.getElementById("filter5input1").value);
 
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var image_data = imageData.data;
@@ -144,6 +143,24 @@ function filterNr5() {
         image_data[i] = Math.pow(image_data[i], 1/input_value_1);
         image_data[i + 1] = Math.pow(image_data[i + 1], 1/input_value_1);
         image_data[i + 2] = Math.pow(image_data[i + 2], 1/input_value_1);
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+}
+
+function filterNr6() { // manipulacja poziomami kolorow
+    var slider_value_1 = parseInt(document.getElementById("filter6range1").value, 10);
+    var slider_value_2 = parseInt(document.getElementById("filter6range2").value, 10);
+    var slider_value_3 = parseInt(document.getElementById("filter6range3").value, 10);
+
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var image_data = imageData.data;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < image_data.length; i += 4) {
+        image_data[i] += slider_value_1;
+        image_data[i + 1] += slider_value_2;
+        image_data[i + 2] += slider_value_3;
     }
 
     ctx.putImageData(imageData, 0, 0);
