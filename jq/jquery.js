@@ -78,6 +78,8 @@ function filterNr1() { // filtr to takie schodki
             ctx.fillRect(image_x, image_y + i * slider_value1 + i * slider_value4, i * slider_value2, slider_value3);
         }
     }
+
+    ctx.globalAlpha = 1;
 }
 
 function filterNr2() { // negatyw
@@ -94,7 +96,7 @@ function filterNr2() { // negatyw
             image_data[i + 2] = 255 - image_data[i + 2];
         }
 
-        ctx.putImageData(imageData, image_x, image_y);
+        ctx.putImageData(imageData, 0 , 0);
     }
 }
 
@@ -112,7 +114,7 @@ function filterNr3() { // czarno-bialy
             image_data[i + 2] = brightness;
         }
 
-        ctx.putImageData(imageData, image_x, image_y);
+        ctx.putImageData(imageData, 0, 0);
     }
 }
 
@@ -168,11 +170,9 @@ function filterNr6() { // manipulacja poziomami kolorow
 
 function prepareDownloadImage() {
     var link = document.getElementById("download_image_button");
-    link.innerHTML = 'download image';
     link.addEventListener('click', function (ev) {
-        console.log("AAAAAAA")
         link.href = canvas.toDataURL();
-        link.download = "mypainting.png";
+        link.download = "canvas_output.png";
     }, false);
     document.body.appendChild(this);
 }
