@@ -37,7 +37,7 @@
 <div class="container" id="content">
     <div class="row">
         <div class="col-md-8">
-            <div class="container thumbnail">
+            <div class="container thumbnail" style="overflow: scroll;">
                 <canvas id="canvas" width="1000" height="800"></canvas>
                 <!--                <img src="" id="outputImg" alt="" style="width: 100%; object-fit: scale-down; !important;"/>-->
             </div>
@@ -179,8 +179,7 @@
                             name="email"
                             placeholder="Gamma... np. 1,2"
                             value="1"
-                            onchange="applyFilter()"
-                            pattern="*">
+                            onchange="applyFilter()">
                 </div>
 
                 <div class="form-group">

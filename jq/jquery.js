@@ -51,6 +51,13 @@ function prepareImageLoader() {
             image.src = fReader.result;
             image.onload = function () {
 
+
+                console.log("image_height" + image.height);
+                console.log("image_width" + image.width);
+
+                canvas.height = image.height + 420;
+                canvas.width = image.width + 420;
+
                 applyFilter();
 
                 var dataURL = canvas.toDataURL("image/png");
