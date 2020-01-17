@@ -38,21 +38,43 @@
     <div class="row">
         <div class="col-md-8">
             <div class="container thumbnail">
-                <input type="file" id="uploadImg"/>
                 <canvas id="canvas" width="1000" height="800"></canvas>
                 <!--                <img src="" id="outputImg" alt="" style="width: 100%; object-fit: scale-down; !important;"/>-->
             </div>
         </div>
         <div class="col-md-4">
+
+            <div class="container thumbnail">
+                <input type="file" id="uploadImg"/>
+            </div>
+
             <div class="container thumbnail">
                 <!--                <button id="apply_filter" class="btn-dark btn-block" onclick="applyFilter()">-->
                 <!--                    Aplikuj filtr-->
                 <!--                </button>-->
+
                 <div class="form-group">
-                    <label class="form-check-label" for="filter1color1">
-                        Wybierz kolor:
-                    </label>
-                    <input type="color" name="favcolor" value="#ff0000" id="filter1color1" onchange="applyFilter()">
+                    <label for="image_x">Zmień X obrazu:</label>
+                    <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="50"
+                            class="slider"
+                            onchange="applyFilter()"
+                            id="image_x">
+                </div>
+
+                <div class="form-group">
+                    <label for="image_y">Zmień Y obrazu:</label>
+                    <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="50"
+                            class="slider"
+                            onchange="applyFilter()"
+                            id="image_y">
                 </div>
 
                 <div class="form-check">
@@ -63,52 +85,62 @@
                     </label>
                 </div>
 
-                <div class="form-group">
-                    <label for="filter1range1">Właściwość 1:</label>
-                    <input
-                            type="range"
-                            min="1"
-                            max="100"
-                            value="50"
-                            class="slider"
-                            onchange="applyFilter()"
-                            id="filter1range1">
-                </div>
+                <div class="section">
 
-                <div class="form-group">
-                    <label for="filter1range2">Właściwość 2:</label>
-                    <input
-                            type="range"
-                            min="1"
-                            max="100"
-                            value="50"
-                            class="slider"
-                            onchange="applyFilter()"
-                            id="filter1range2">
-                </div>
+                    <div class="form-group">
+                        <label class="form-check-label" for="filter1color1">
+                            Wybierz kolor:
+                        </label>
+                        <input type="color" name="favcolor" value="#ff0000" id="filter1color1" onchange="applyFilter()">
+                    </div>
 
-                <div class="form-group">
-                    <label for="filter1range3">Właściwość 3:</label>
-                    <input
-                            type="range"
-                            min="1"
-                            max="100"
-                            value="50"
-                            class="slider"
-                            onchange="applyFilter()"
-                            id="filter1range3">
-                </div>
+                    <div class="form-group">
+                        <label for="filter1range1">Właściwość 1:</label>
+                        <input
+                                type="range"
+                                min="1"
+                                max="100"
+                                value="50"
+                                class="slider"
+                                onchange="applyFilter()"
+                                id="filter1range1">
+                    </div>
 
-                <div class="form-group">
-                    <label for="filter1range4">Właściwość 4:</label>
-                    <input
-                            type="range"
-                            min="1"
-                            max="1000"
-                            value="500"
-                            class="slider"
-                            onchange="applyFilter()"
-                            id="filter1range4">
+                    <div class="form-group">
+                        <label for="filter1range2">Właściwość 2:</label>
+                        <input
+                                type="range"
+                                min="1"
+                                max="100"
+                                value="50"
+                                class="slider"
+                                onchange="applyFilter()"
+                                id="filter1range2">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filter1range3">Właściwość 3:</label>
+                        <input
+                                type="range"
+                                min="1"
+                                max="100"
+                                value="50"
+                                class="slider"
+                                onchange="applyFilter()"
+                                id="filter1range3">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filter1range4">Właściwość 4:</label>
+                        <input
+                                type="range"
+                                min="1"
+                                max="1000"
+                                value="500"
+                                class="slider"
+                                onchange="applyFilter()"
+                                id="filter1range4">
+                    </div>
                 </div>
 
                 <div class="form-check">
@@ -185,6 +217,12 @@
                             class="slider"
                             onchange="applyFilter()"
                             id="filter6range3">
+                </div>
+
+                <div class="form-group">
+                    <a href="" id="download_image_button">
+                        Pobierz
+                    </a>
                 </div>
             </div>
         </div>

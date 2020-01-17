@@ -2,12 +2,14 @@ $(document).ready(function () {
     initTooltips();
     prepareImageLoader();
     applyFilter();
-    // prepareSliders();
+    prepareDownloadImage();
 });
 
 var image = new Image();
 var ctx;
 var canvas;
+var image_x;
+var image_y;
 
 function initTooltips() {
     $(document).ready(function () {
@@ -16,8 +18,12 @@ function initTooltips() {
 }
 
 function applyFilter() {
+
+    image_x = parseInt(document.getElementById("image_x").value, 10);
+    image_y = parseInt(document.getElementById("image_y").value, 10);
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(image, 0, 0);
+    ctx.drawImage(image, image_x, image_y);
 
     filterNr1();
     filterNr2();
@@ -44,7 +50,9 @@ function prepareImageLoader() {
 
             image.src = fReader.result;
             image.onload = function () {
-                ctx.drawImage(this, 0, 0);
+
+                applyFilter();
+
                 var dataURL = canvas.toDataURL("image/png");
                 localStorage.setItem("imgData", dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
             };
@@ -54,16 +62,6 @@ function prepareImageLoader() {
     });
 }
 
-// function prepareSliders() {
-//     var slider = document.getElementById("filter1range");
-//     var output = document.getElementById("demo");
-//     output.innerHTML = slider.value; // Display the default slider value
-//
-//     slider.oninput = function() {
-//         output.innerHTML = this.value;
-//     }
-// }
-
 function filterNr1() { // filtr to takie schodki
     var use = $("#filter1toggle");
 
@@ -72,13 +70,12 @@ function filterNr1() { // filtr to takie schodki
         var slider_value2 = document.getElementById("filter1range2").value;
         var slider_value3 = document.getElementById("filter1range3").value;
         var slider_value4 = document.getElementById("filter1range4").value;
-        var color_value1 = document.getElementById("filter1color1").value;
 
-        ctx.fillStyle = color_value1;
+        ctx.fillStyle = document.getElementById("filter1color1").value;
 
         for (var i = 0; i < 1 && i * slider_value1 < image.height - 11; i += 0.04) {
             ctx.globalAlpha = i;
-            ctx.fillRect(0, i * slider_value1 + i * slider_value4, i * slider_value2, slider_value3);
+            ctx.fillRect(image_x, image_y + i * slider_value1 + i * slider_value4, i * slider_value2, slider_value3);
         }
     }
 }
@@ -97,7 +94,7 @@ function filterNr2() { // negatyw
             image_data[i + 2] = 255 - image_data[i + 2];
         }
 
-        ctx.putImageData(imageData, 0, 0);
+        ctx.putImageData(imageData, image_x, image_y);
     }
 }
 
@@ -115,7 +112,7 @@ function filterNr3() { // czarno-bialy
             image_data[i + 2] = brightness;
         }
 
-        ctx.putImageData(imageData, 0, 0);
+        ctx.putImageData(imageData, image_x, image_y);
     }
 }
 
@@ -132,7 +129,7 @@ function filterNr4() {
         image_data[i + 2] += slider_value_1;
     }
 
-    ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData(imageData, image_x, image_y);
 }
 
 function filterNr5() {
@@ -143,12 +140,12 @@ function filterNr5() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (var i = 0; i < image_data.length; i += 4) {
-        image_data[i] = Math.pow(image_data[i], 1/input_value_1);
-        image_data[i + 1] = Math.pow(image_data[i + 1], 1/input_value_1);
-        image_data[i + 2] = Math.pow(image_data[i + 2], 1/input_value_1);
+        image_data[i] = Math.pow(image_data[i], 1 / input_value_1);
+        image_data[i + 1] = Math.pow(image_data[i + 1], 1 / input_value_1);
+        image_data[i + 2] = Math.pow(image_data[i + 2], 1 / input_value_1);
     }
 
-    ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData(imageData, image_x, image_y);
 }
 
 function filterNr6() { // manipulacja poziomami kolorow
@@ -166,5 +163,16 @@ function filterNr6() { // manipulacja poziomami kolorow
         image_data[i + 2] += slider_value_3;
     }
 
-    ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData(imageData, image_x, image_y);
+}
+
+function prepareDownloadImage() {
+    var link = document.getElementById("download_image_button");
+    link.innerHTML = 'download image';
+    link.addEventListener('click', function (ev) {
+        console.log("AAAAAAA")
+        link.href = canvas.toDataURL();
+        link.download = "mypainting.png";
+    }, false);
+    document.body.appendChild(this);
 }

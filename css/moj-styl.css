@@ -210,3 +210,7 @@ body {
     background: #4CAF50;
     cursor: pointer;
 }
+
+.section {
+    outline: 2px hotpink dotted;
+}
