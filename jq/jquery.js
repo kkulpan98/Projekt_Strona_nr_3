@@ -33,6 +33,7 @@ function applyFilter() {
     filterNr4();
     filterNr5();
     filterNr6();
+    filterNr7();
 }
 
 function prepareImageLoader() {
@@ -177,6 +178,17 @@ function filterNr6() { // manipulacja poziomami kolorow
     ctx.putImageData(imageData, image_x, image_y);
 }
 
+function filterNr7() {
+
+    var pomidor = new Image();
+    pomidor.src = "img/pomidorek.png";
+    pomidor.onload = function () {
+        ctx.drawImage(pomidor, canvas.width / 2 - pomidor.width / 2, canvas.height / 2 - pomidor.height / 2);
+    }
+
+
+}
+
 function prepareDownloadImage() {
     var link = document.getElementById("download_image_button");
     link.addEventListener('click', function (ev) {
@@ -185,3 +197,4 @@ function prepareDownloadImage() {
     }, false);
     document.body.appendChild(this);
 }
+
