@@ -18,10 +18,12 @@ function initTooltips() {
 }
 
 function applyFilter() {
-
     image_x = parseInt(document.getElementById("image_x").value, 10);
     image_y = parseInt(document.getElementById("image_y").value, 10);
+    var opacity = parseInt(document.getElementById("filter7range1").value, 10);
 
+
+    ctx.globalAlpha = opacity / 100;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, image_x, image_y);
 
@@ -55,8 +57,8 @@ function prepareImageLoader() {
                 console.log("image_height" + image.height);
                 console.log("image_width" + image.width);
 
-                canvas.height = image.height + 420;
-                canvas.width = image.width + 420;
+                canvas.height = image.height + 410;
+                canvas.width = image.width + 410;
 
                 applyFilter();
 
@@ -103,7 +105,7 @@ function filterNr2() { // negatyw
             image_data[i + 2] = 255 - image_data[i + 2];
         }
 
-        ctx.putImageData(imageData, 0 , 0);
+        ctx.putImageData(imageData, 0, 0);
     }
 }
 
@@ -170,20 +172,6 @@ function filterNr6() { // manipulacja poziomami kolorow
         image_data[i] += slider_value_1;
         image_data[i + 1] += slider_value_2;
         image_data[i + 2] += slider_value_3;
-    }
-
-    ctx.putImageData(imageData, image_x, image_y);
-}
-
-function filterNr7() { // manipulacja przezroczystoscia
-    var slider_value_1 = parseInt(document.getElementById("filter7range1").value, 10);
-
-    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    var image_data = imageData.data;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (var i = 0; i < image_data.length; i += 4) {
-        image_data[i + 3] = slider_value_1;
     }
 
     ctx.putImageData(imageData, image_x, image_y);
