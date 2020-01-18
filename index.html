@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="container thumbnail" style="overflow: scroll;">
-                <canvas id="canvas" width="1000" height="800"></canvas>
+                <canvas class="w-100" id="canvas" width="1000" height="800"></canvas>
                 <!--                <img src="" id="outputImg" alt="" style="width: 100%; object-fit: scale-down; !important;"/>-->
             </div>
         </div>
@@ -219,7 +219,19 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="" id="download_image_button">
+                    <label for="filter7range1">Wybierz przeźroczystość</label>
+                    <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="100"
+                            class="slider"
+                            onchange="applyFilter()"
+                            id="filter7range1">
+                </div>
+
+                <div class="form-group">
+                    <a class="btn-block btn-dark text-center" href="" id="download_image_button">
                         Pobierz
                     </a>
                 </div>

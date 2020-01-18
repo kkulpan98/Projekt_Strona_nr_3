@@ -175,6 +175,20 @@ function filterNr6() { // manipulacja poziomami kolorow
     ctx.putImageData(imageData, image_x, image_y);
 }
 
+function filterNr7() { // manipulacja przezroczystoscia
+    var slider_value_1 = parseInt(document.getElementById("filter7range1").value, 10);
+
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var image_data = imageData.data;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < image_data.length; i += 4) {
+        image_data[i + 3] = slider_value_1;
+    }
+
+    ctx.putImageData(imageData, image_x, image_y);
+}
+
 function prepareDownloadImage() {
     var link = document.getElementById("download_image_button");
     link.addEventListener('click', function (ev) {
