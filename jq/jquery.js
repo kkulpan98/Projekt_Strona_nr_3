@@ -179,29 +179,32 @@ function filterNr6() { // manipulacja poziomami kolorow
 }
 
 function filterNr7() {
-
-    var pomidor = new Image();
-    pomidor.src = "img/pomidorek.png";
-    // pomidor.onload = function () {
-    //     ctx.drawImage(pomidor, canvas.width / 2 - pomidor.width / 2, canvas.height / 2 - pomidor.height / 2);
-    // }
-
-    drawImageBorder(pomidor);
-
+    var use = $("#filter8toggle");
+    if (use.prop("checked")) {
+        var pomidor = new Image();
+        pomidor.src = "img/pomidorek.png";
+        drawImageBorderType1(pomidor);
+    }
 }
 
-function drawImageBorder(input_image) {
+function drawImageBorderType1(input_image) {
+    var slider_value_1 = parseInt(document.getElementById("filter8range1").value, 10);
+
     input_image.onload = function () {
-        ctx.drawImage(input_image, 0, 0);
-        ctx.drawImage(input_image, canvas.width / 2 - input_image.width / 2, 0);
-        ctx.drawImage(input_image, canvas.width - input_image.width, 0);
 
-        ctx.drawImage(input_image, 0, canvas.height / 2 - input_image.height / 2);
-        ctx.drawImage(input_image, canvas.width - input_image.width, canvas.height / 2 - input_image.height / 2);
+        image_width = input_image.width * 50 / (101 - slider_value_1);
+        image_height = input_image.height * 50 / (101 - slider_value_1);
 
-        ctx.drawImage(input_image, 0, canvas.height - input_image.height);
-        ctx.drawImage(input_image, canvas.width / 2 - input_image.width / 2, canvas.height - input_image.height);
-        ctx.drawImage(input_image, canvas.width - input_image.width, canvas.height - input_image.height);
+        ctx.drawImage(input_image, 0, 0, image_width, image_height);
+        ctx.drawImage(input_image, canvas.width / 2 - image_width / 2, 0, image_width, image_height);
+        ctx.drawImage(input_image, canvas.width - image_width, 0, image_width, image_height);
+
+        ctx.drawImage(input_image, 0, canvas.height / 2 - image_height / 2, image_width, image_height);
+        ctx.drawImage(input_image, canvas.width - image_width, canvas.height / 2 - image_height / 2, image_width, image_height);
+
+        ctx.drawImage(input_image, 0, canvas.height - image_height, image_width, image_height);
+        ctx.drawImage(input_image, canvas.width / 2 - image_width / 2, canvas.height - image_height, image_width, image_height);
+        ctx.drawImage(input_image, canvas.width - image_width, canvas.height - image_height, image_width, image_height);
     }
 }
 

@@ -143,13 +143,38 @@
                 </div>
             </div>
 
+
+            <div class="container thumbnail">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="filter8toggle"
+                           onchange="applyFilter()">
+                    <label class="form-check-label" for="filter8toggle">
+                        Czy chcesz użyć filtra z pomidorkami 1?
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="filter8range1">Wielkość pomidorków</label>
+                    <input
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="50"
+                            class="slider"
+                            onchange="applyFilter()"
+                            id="filter8range1">
+                </div>
+            </div>
+
+
             <div class="container thumbnail">
 
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="filter2toggle"
                            onchange="applyFilter()">
                     <label class="form-check-label" for="filter2toggle">
-                        Czy chcesz użyć filtra 2?
+                        Czy zrobić negatyw?
                     </label>
                 </div>
 
@@ -157,7 +182,7 @@
                     <input class="form-check-input" type="checkbox" value="" id="filter3toggle"
                            onchange="applyFilter()">
                     <label class="form-check-label" for="filter3toggle">
-                        Czy chcesz użyć filtra 3?
+                        Czy zrobić czarno-białe?
                     </label>
                 </div>
 
@@ -221,7 +246,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="filter7range1">Wybierz przeźroczystość</label>
+                    <label for="filter7range1">Wybierz przeźroczystości</label>
                     <input
                             type="range"
                             min="0"
