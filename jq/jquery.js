@@ -182,11 +182,27 @@ function filterNr7() {
 
     var pomidor = new Image();
     pomidor.src = "img/pomidorek.png";
-    pomidor.onload = function () {
-        ctx.drawImage(pomidor, canvas.width / 2 - pomidor.width / 2, canvas.height / 2 - pomidor.height / 2);
+    // pomidor.onload = function () {
+    //     ctx.drawImage(pomidor, canvas.width / 2 - pomidor.width / 2, canvas.height / 2 - pomidor.height / 2);
+    // }
+
+    drawImageBorder(pomidor);
+
+}
+
+function drawImageBorder(input_image) {
+    input_image.onload = function () {
+        ctx.drawImage(input_image, 0, 0);
+        ctx.drawImage(input_image, canvas.width / 2 - input_image.width / 2, 0);
+        ctx.drawImage(input_image, canvas.width - input_image.width, 0);
+
+        ctx.drawImage(input_image, 0, canvas.height / 2 - input_image.height / 2);
+        ctx.drawImage(input_image, canvas.width - input_image.width, canvas.height / 2 - input_image.height / 2);
+
+        ctx.drawImage(input_image, 0, canvas.height - input_image.height);
+        ctx.drawImage(input_image, canvas.width / 2 - input_image.width / 2, canvas.height - input_image.height);
+        ctx.drawImage(input_image, canvas.width - input_image.width, canvas.height - input_image.height);
     }
-
-
 }
 
 function prepareDownloadImage() {
